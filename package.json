@@ -1,0 +1,33 @@
+{
+  "name": "swish-stats-server-app",
+  "version": "1.0.0",
+  "description": "Basketball Stats Tracking App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaredmichael/swish-stats-server-app.git"
+  },
+  "keywords": [
+    "Stats",
+    "Basketball"
+  ],
+  "author": "Jared Juan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaredmichael/swish-stats-server-app/issues"
+  },
+  "homepage": "https://github.com/jaredmichael/swish-stats-server-app#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.22",
+    "morgan": "^1.9.1",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  }
+}
