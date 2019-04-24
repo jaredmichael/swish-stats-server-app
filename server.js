@@ -7,7 +7,7 @@ const passport = require('passport');
 
 const { router: usersRouter } = require('./users');
 const { router: authRouter, localStrategy, jwtStrategy } = require('./auth');
-
+const { router: statsRouter } = require('./stats');
 mongoose.Promise = global.Promise;
 
 const { PORT, DATABASE_URL } = require('./config');
@@ -21,7 +21,7 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
     res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
     if (req.method === 'OPTIONS') {
-        return res.send(204);
+        return res.sendStatus(204);
     }
     next();
 });
@@ -29,8 +29,9 @@ app.use(function (req, res, next) {
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-app.use('/api/users/', usersRouter);
-app.use('./api/auth/', authRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/auth', authRouter);
+app.use('/api/stats', statsRouter);
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
@@ -43,6 +44,11 @@ app.get('/api/protected', jwtAuth, (req, res) => {
 app.use('*', (req, res) => {
     return res.status(404).json({ message: 'Not Found' });
 });
+
+app.use((error, req, res, next) => {
+    console.log(error);
+    return res.status(500).json({ message: 'Internal server error' });
+  });
 
 let server;
 

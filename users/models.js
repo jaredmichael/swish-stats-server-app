@@ -1,7 +1,6 @@
 'use strict';
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-
 mongoose.Promise = global.Promise;
 
 const UserSchema = mongoose.Schema({
@@ -54,7 +53,8 @@ UserSchema.methods.serialize = function() {
         jerseyNum: this.jerseyNum || '',
         age: this.age || '',
         height: this.height || '',
-        position: this.position || ''
+        position: this.position || '',
+        id: this._id
     };
 };
 

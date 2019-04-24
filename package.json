@@ -21,9 +21,15 @@
   },
   "homepage": "https://github.com/jaredmichael/swish-stats-server-app#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.4.22",
     "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

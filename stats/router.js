@@ -1,12 +1,9 @@
 'use strict';
-
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const { StatSheet } = require ('./models');
-
+const {StatSheet} = require ('./models');
 const router = express.Router();
-
 const passport = require('passport');
 const jsonParser = bodyParser.json();
 const jwtAuth = passport.authenticate('jwt', { session: false });
@@ -54,14 +51,11 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
         'threeMade', 
         'ftMade', 
         'dReb', 
-        'blk', 
-        'twoPer', 
-        'threePer', 
-        'ftPer', 
+        'blk',  
         'totReb', 
         'to'
     ];
-    for (let i =0; i < requiredFields.length; i++) {
+    for (let i=0; i < requiredFields.length; i++) {
         const field = requiredFields[i];
         if (!(field in req.body)) {
             const message = `Missing \`${field}\` in request body`
@@ -69,7 +63,7 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
         }
     }
 
-    StatSheet
+    return StatSheet
         .create({
             date: req.body.date,
             vs: req.body.vs,
@@ -84,6 +78,7 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
             ftMade: req.body.ftMade,
             dReb: req.body.dReb,
             blk: req.body.blk,
+            points: req.body.points,
             twoPer: req.body.twoPer,
             threePer: req.body.threePer,
             ftPer: req.body.ftPer,
@@ -92,9 +87,9 @@ router.post('/', jwtAuth, jsonParser, (req, res) => {
             userId: req.user.id
         })
         .then(stat => res.status(201).json(stat.serialize()))
-        .catch(err => {
-            res.status(500).json({ message: 'Internal server error' });
-        });
+        //.catch(err => {
+          //  res.status(500).json({ message: 'Internal server error' });
+        //});
 });
 
 router.put('/:id', jwtAuth, jsonParser, (req, res) => {
@@ -113,6 +108,7 @@ router.put('/:id', jwtAuth, jsonParser, (req, res) => {
         'ftMade', 
         'dReb', 
         'blk', 
+        'points',
         'twoPer', 
         'threePer', 
         'ftPer', 

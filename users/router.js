@@ -7,6 +7,7 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 
 router.post('/', jsonParser, (req, res) => {
+    console.log(req.body);
     const requiredFields = [
         'username', 
         'password', 
@@ -78,7 +79,8 @@ router.post('/', jsonParser, (req, res) => {
     }
     const sizedFields = {
         username: {
-            min: 1
+            min: 1,
+            max: 20
         },
         password: {
             min: 8,
@@ -107,7 +109,7 @@ router.post('/', jsonParser, (req, res) => {
         });
     }
 
-    let {username, password, firstName = '', lastName = ''} = req.body;
+    let {username, password, firstName = '', lastName = '', jerseyNum = '', age = '', height = '', position = ''} = req.body;
     firstName = firstName.trim();
     lastName = lastName.trim();
 
@@ -131,13 +133,18 @@ router.post('/', jsonParser, (req, res) => {
                 username,
                 password: hash,
                 firstName,
-                lastName 
+                lastName, 
+                jerseyNum,
+                age,
+                height,
+                position
             });
         })
         .then(user => {
             return res.status(201).json(user.serialize());
         })
         .catch(err => {
+            console.log(err);
             // Forward validation errors to client, else give 500 error for something unexpected
             if (err.reason === 'ValidationError') {
                 return res.status(err.code).json(err);
