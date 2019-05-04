@@ -9,7 +9,7 @@ const jsonParser = bodyParser.json();
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
 router.get('/', jwtAuth, (req, res) => {
-    StatSheet  
+    return StatSheet  
         .find({
             userId: req.user.id 
         })
@@ -21,6 +21,7 @@ router.get('/', jwtAuth, (req, res) => {
         })
         .catch(err => {
             res.status(500).json({ message: 'Internal server error' });
+            console.log(err);
         });
 });
 
@@ -132,7 +133,7 @@ router.delete('/:id', (req,res) => {
     StatSheet
         .findByIdAndRemove(req.params.id)
         .then(sheet => res.status(204).end())
-        .catch(err => res.status(500).json({ message: 'Internal server error' }));
+        //.catch(err => res.status(500).json({ message: 'Internal server error' }));
 });
 
 router.use('*', function (req, res) {

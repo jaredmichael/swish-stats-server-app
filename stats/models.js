@@ -17,74 +17,61 @@ const statSheetSchema = mongoose.Schema({
     },
     ast: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     twoShot: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     threeShot: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     ftShot: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     oReb: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     stl: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     twoMade: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     threeMade: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     ftMade: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     dReb: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     blk: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     totReb: { 
         type: Number,
-        required: true,  
         default: '' 
     },
     to: { 
         type: Number,
-        required: true,  
         default: '' 
     }
 })
 
 statSheetSchema.methods.serialize = function () {
     return {
-        id: this._id,
+        statsId: this._id,
         date: this.date || '',
         vs: this.vs || '',
         ast: this.ast || '',
