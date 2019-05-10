@@ -1,0 +1,9 @@
+language: node_js
+node_js: node_js
+services: 
+  - mongodb
+deploy:
+  provider: heroku
+  app: swish-stats-server-app
+  api-key:
+    secure: FVjSezcCy3ZIZYw+Prj+FmYyWC3anvcpOTv40Y22BjQz8wEPEbw/BOikS4Vd5i7eFOd5rKG3aKJHSxtMhDLzys1xejc1GkJ5Gkd0CddvrQoqlpwVTSPPR0HKHAinnEzxBjlvGu5My7AGn9uRf29nG2ZgzDQQtple5r8e2WkG+ADxBM1HwVBrrgnqHLHkuarWYyF6oN/rxZ0pL/UGGJrebgt8x++bYJU916EGfSkrsDfdn3Leq2FXugRI7sz1//XU3XzQff4OKZPwLTo0/sRFyQUhUzzLePvTysE54uF0SEI/hNrzgatTFzf70WlwF/psaJQXpyUm3bMC1L12amLSacIh/g/S71IA+USISoFIuV6wig4f/Zj5IEHB5Gsg43zOXdeAo2/448uTG4NDjVgPEbJexKItK0Md4o7x5gX9w9w2XIcJhQpn9BrA747xJZXa4fU99LjFgqfqaJ0/u/IgjlP86n6opKrKdb8sosMVrUr4CPnMT4fLSgfg4cyvW9PqrTvUoha+MXcoEKCQAVYQviRPXlmC/zwA0R35eSlNXVqJahDlwjZpXCFoTZj8ySPRe711WCzHm94/LEk/x2Kwapcar86QnrZCuRW3+fTFMclPnvkaB+pxuR6eZGxoCm08ZV9mPz9WD5EKkYbDTQoD3IpLc4y4WEjATHjJ8A2tARI=
